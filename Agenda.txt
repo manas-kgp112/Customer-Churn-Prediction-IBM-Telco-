@@ -1,0 +1,7 @@
+WSDM — KKBox’s Music Recommendation Challenge
+
+
+Outlines of the project
+1) Setup github repository and virtual environment (extras : requirements.txt, setup.py)
+2) Creating aligned folder structure (src, components) to build packages
+3) Custom Exception , Logger and utilities script.
