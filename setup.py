@@ -28,11 +28,11 @@ def get_readme(file_path:str) -> str:
 # Project Configuration
 # reference link : https://pythonhosted.org/an_example_pypi_project/setuptools.html
 setup (
-    name = "music_recommendation_system",
+    name = "customer_churn_prediction",
     version = "0.0.1",
     author = "Manas Sharma",
     author_email = "manassharma.ms2593@gmail.com",
-    description = ("Music Recommendation system trained on KKBox dataset."),
+    description = ("Customer Churn Prediction system trained on IBM's [Telco churn dataset]"),
     packages = find_packages(),
     long_description = get_readme('README.md'),
     install_requires = get_requirements('requirements.txt')
