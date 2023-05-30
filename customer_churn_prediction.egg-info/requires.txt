@@ -10,4 +10,3 @@ plotly
 ipykernel
 openpyxl
 nbformat
--e .

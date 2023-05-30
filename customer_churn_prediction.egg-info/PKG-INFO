@@ -1,3 +1,10 @@
+Metadata-Version: 2.1
+Name: customer-churn-prediction
+Version: 0.0.1
+Summary: Customer Churn Prediction system trained on IBM's [Telco churn dataset]
+Author: Manas Sharma
+Author-email: manassharma.ms2593@gmail.com
+
 # Telco Customer Churn Prediction Model
 
 
