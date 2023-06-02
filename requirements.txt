@@ -10,4 +10,6 @@ plotly
 ipykernel
 openpyxl
 nbformat
+xgboost
+lightgbm
 -e .
