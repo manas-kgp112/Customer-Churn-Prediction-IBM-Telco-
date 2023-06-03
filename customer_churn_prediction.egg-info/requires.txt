@@ -12,3 +12,4 @@ openpyxl
 nbformat
 xgboost
 lightgbm
+dill
