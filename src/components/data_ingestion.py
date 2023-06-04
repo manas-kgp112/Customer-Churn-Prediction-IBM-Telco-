@@ -13,6 +13,7 @@ from src.logger import logging
 
 # Importing custom modules for vizualization, model-training etc.
 from src.components.data_visualization import DataVisualization
+from src.components.data_transformation import DataTransformation
 
 
 
@@ -94,3 +95,10 @@ if __name__ == "__main__":
     categorical_features = data_visualization.get_categorical_features(data=data)
     data_visualization.load_categorical_visualization(categorical_features=categorical_features, data=data)
     data_visualization.load_continous_visualization(data_services=data_services)
+
+
+    # data transformation sequence initiation
+    data_transformation = DataTransformation()
+    # data_processor, drop_features, dummy_features = data_transformation.data_transformation_object()
+    transformed_data = data_transformation.initiate_data_transformation(data=data)
+    _, _, _, _, train_data, test_data = data_transformation.split_dataset(transformed_data=transformed_data)

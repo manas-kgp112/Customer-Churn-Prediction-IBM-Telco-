@@ -1,0 +1,10 @@
+[ 2023-06-03 20:12:00,759 ] 55 root - INFO - Initiating Data Ingestion sequence...
+[ 2023-06-03 20:12:05,622 ] 70 root - INFO - Extracted 6 files as DataFrames.
+[ 2023-06-03 20:12:05,624 ] 39 root - INFO - Initiating data visulaization sequence...
+[ 2023-06-03 20:12:05,624 ] 40 root - INFO - Extracting categorical features.
+[ 2023-06-03 20:12:06,957 ] 69 root - INFO - Plots saved as : artifacts\plots\categorical_features_plot.pdf
+[ 2023-06-03 20:12:07,277 ] 85 root - INFO - Plots saved as : artifacts\plots\continous_features_plot.pdf
+[ 2023-06-03 20:12:07,277 ] 102 root - INFO - Initiating data transformation sequence...
+[ 2023-06-03 20:12:07,277 ] 50 root - INFO - Collecting features.
+[ 2023-06-03 20:12:07,277 ] 79 root - INFO - Data transformation object extracted.
+[ 2023-06-03 20:12:07,278 ] 86 root - INFO - Data transformation object saved at artifacts\preprocessor.pkl.

@@ -35,13 +35,13 @@ from src.utils import save_object
 # specifies path to store preprocessor model file
 @dataclass
 class DataTransformationConfig:
-    preprocessor_obj_file_path = os.path.join("atifacts", "preprocessor.pkl")
+    preprocessor_obj_file_path = os.path.join("artifacts", "preprocessor.pkl")
 
 
 
 # DataTransformation() class processes the data
 class DataTransformation:
-    def __init__(self) -> None:
+    def __init__(self):
         self.data_transformation_config = DataTransformationConfig()
 
     # This function exports the data transformation object
@@ -65,25 +65,15 @@ class DataTransformation:
                 'City', 'Zip Code', 'Churn Label', 'Count'
             ]
 
-            col_trans = ColumnTransformer(
+            preprocessor = ColumnTransformer(
                 [
-                    ("label encoder", LabelEncoder(), categorical_features)
+                    ("column_transform", LabelEncoder(), categorical_features)
                 ], remainder='passthrough'
             )
 
-            preprocessor = Pipeline(
-                [
-                    ("column_transform", col_trans),
-                ]
-            )
+            
             logging.info("Data transformation object extracted.")
 
-            save_object(
-                file_path=self.data_transformation_config.preprocessor_obj_file_path,
-                obj=preprocessor
-            )
-
-            logging.info(f"Data transformation object saved at {self.data_transformation_config.preprocessor_obj_file_path}.")
 
             return (
                 preprocessor,
@@ -108,7 +98,10 @@ class DataTransformation:
 
             # Dumping all null values
             data_new.dropna(axis=0, inplace=True)
-            data_new_f = pd.DataFrame(preprocessing_obj.fit_transform(data_new), columns=data_new.columns)
+            logging.info("Applying preprocessing object on training dataframe")
+            # preprocessing_obj.fit(data_new)
+            transformed_array = preprocessing_obj.fit_transform(data_new)
+            data_new_f = pd.DataFrame(transformed_array, columns=data_new.columns)
             logging.info("Data transformed successfully")
 
             # Creating dummy variables
@@ -118,6 +111,12 @@ class DataTransformation:
             data_new_f.to_excel("transformed_churn.xlsx")
             logging.info("Transformed data saved as .xlsx @ [artifacts/data/transformed_churn.xlsx]")
 
+            save_object(
+                file_path=self.data_transformation_config.preprocessor_obj_file_path,
+                obj=preprocessing_obj
+            )
+
+            logging.info(f"Data transformation object saved at {self.data_transformation_config.preprocessor_obj_file_path}.")
 
             return (
                 data_new_f
@@ -130,18 +129,21 @@ class DataTransformation:
 
 
     # This function splits the data into train and validation set
-    def split_data(self, transformed_data):
+    def split_dataset(self, transformed_data):
         try:
             X = transformed_data.drop(['Churn Value'], axis=1)
             Y = transformed_data(['Churn Value'])
 
             X_train, X_val, Y_train, Y_val = train_test_split(X, Y, test_size=0.2, random_state=42)
+            train_data, val_data = train_test_split(transformed_data, test_size=0.2, random_state=42)
 
             return (
                 X_train,
                 X_val,
                 Y_train,
-                Y_val
+                Y_val,
+                train_data,
+                val_data
             )
         except Exception as e:
             raise CustomException(e, sys)
