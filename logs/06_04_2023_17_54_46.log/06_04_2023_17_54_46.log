@@ -1,0 +1,12 @@
+[ 2023-06-04 17:54:47,647 ] 55 root - INFO - Initiating Data Ingestion sequence...
+[ 2023-06-04 17:54:53,420 ] 70 root - INFO - Extracted 6 files as DataFrames.
+[ 2023-06-04 17:54:53,420 ] 39 root - INFO - Initiating data visulaization sequence...
+[ 2023-06-04 17:54:53,420 ] 40 root - INFO - Extracting categorical features.
+[ 2023-06-04 17:54:55,046 ] 69 root - INFO - Plots saved as : artifacts\plots\categorical_features_plot.pdf
+[ 2023-06-04 17:54:55,415 ] 85 root - INFO - Plots saved as : artifacts\plots\continous_features_plot.pdf
+[ 2023-06-04 17:54:55,415 ] 84 root - INFO - Initiating data transformation sequence...
+[ 2023-06-04 17:54:55,415 ] 49 root - INFO - Collecting features.
+[ 2023-06-04 17:54:55,415 ] 67 root - INFO - Data transformation object extracted.
+[ 2023-06-04 17:54:55,427 ] 93 root - INFO - Applying preprocessing object on training dataframe
+[ 2023-06-04 17:54:55,441 ] 98 root - INFO - Data transformed successfully
+[ 2023-06-04 17:55:00,985 ] 107 root - INFO - Transformed data saved as .xlsx @ [artifacts/data/transformed_churn.xlsx]

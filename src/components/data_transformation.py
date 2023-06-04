@@ -18,7 +18,6 @@ from src.utils import save_object
 
 
 # Importing custom modules
-# from src.transformations.drop_col import DropColumnsTransformer
 
 
 
@@ -44,7 +43,7 @@ class DataTransformation:
     def __init__(self):
         self.data_transformation_config = DataTransformationConfig()
 
-    # This function exports the data transformation object
+    # This function exports the data transformation features
     def data_transformation_object(self):
         try:
             logging.info("Collecting features.")
@@ -64,19 +63,12 @@ class DataTransformation:
                 'CustomerID', 'Lat Long', 'Churn Reason', 'Country', 'State',
                 'City', 'Zip Code', 'Churn Label', 'Count'
             ]
-
-            preprocessor = ColumnTransformer(
-                [
-                    ("column_transform", LabelEncoder(), categorical_features)
-                ], remainder='passthrough'
-            )
-
             
             logging.info("Data transformation object extracted.")
 
 
             return (
-                preprocessor,
+                categorical_features,
                 drop_features,
                 dummy_cat_features
             )
@@ -90,7 +82,7 @@ class DataTransformation:
     def initiate_data_transformation(self, data):
         try:
             logging.info("Initiating data transformation sequence...")
-            preprocessing_obj, drop_features, dummy_features = self.data_transformation_object()
+            categorical_features, drop_features, dummy_features = self.data_transformation_object()
 
             # Dumping some features and changing dtypes
             data_new = data.drop(drop_features, axis=1)
@@ -99,24 +91,18 @@ class DataTransformation:
             # Dumping all null values
             data_new.dropna(axis=0, inplace=True)
             logging.info("Applying preprocessing object on training dataframe")
-            # preprocessing_obj.fit(data_new)
-            transformed_array = preprocessing_obj.fit_transform(data_new)
-            data_new_f = pd.DataFrame(transformed_array, columns=data_new.columns)
+
+            label_enc = LabelEncoder()
+            for col in categorical_features:
+                data_new[col] = label_enc.fit_transform(data_new[col])
             logging.info("Data transformed successfully")
 
             # Creating dummy variables
-            data_new_f = pd.get_dummies(data_new_f, columns=dummy_features, drop_first=True)
+            data_new_f = pd.get_dummies(data_new, columns=dummy_features, drop_first=True)
 
             # saving the datafile as csv
-            data_new_f.to_excel("transformed_churn.xlsx")
+            data_new_f.to_excel(os.path.join("artifacts", "data", "transformed_churn.xlsx"))
             logging.info("Transformed data saved as .xlsx @ [artifacts/data/transformed_churn.xlsx]")
-
-            save_object(
-                file_path=self.data_transformation_config.preprocessor_obj_file_path,
-                obj=preprocessing_obj
-            )
-
-            logging.info(f"Data transformation object saved at {self.data_transformation_config.preprocessor_obj_file_path}.")
 
             return (
                 data_new_f
@@ -132,7 +118,7 @@ class DataTransformation:
     def split_dataset(self, transformed_data):
         try:
             X = transformed_data.drop(['Churn Value'], axis=1)
-            Y = transformed_data(['Churn Value'])
+            Y = transformed_data['Churn Value']
 
             X_train, X_val, Y_train, Y_val = train_test_split(X, Y, test_size=0.2, random_state=42)
             train_data, val_data = train_test_split(transformed_data, test_size=0.2, random_state=42)
