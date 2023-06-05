@@ -41,7 +41,10 @@ from src.logger import logging
 
 
 # Importing custom modules
-from src.utils import save_object # saves the model on the specified path
+from src.utils import (
+    save_object, # saves the model on the specified path
+    evaluate_models # evaluate models and tunes them {export best scoring model}
+)
 
 
 '''
@@ -109,7 +112,11 @@ class ModeTrainer:
                     ]
                 ),
                 'XgBoost' : XGBClassifier(),
-                'LightGBM' : LGBMClassifier(),
+                'LightGBM' : LGBMClassifier(
+                    scale_pos_weight =3,
+                    random_state=42,
+                    objective = 'binary'
+                ),
                 'CatBoost' : CatBoostClassifier()
             }
 
@@ -155,9 +162,24 @@ class ModeTrainer:
                 'Stacking Classifier' : {}, # No hyperparameter to tune
                 'Voting Classifier' : {}, # No hyperparameter to tune
                 'XgBoost' : {},
-                'LightGBM' : {},
-                'CatBoost' : {}
+                'LightGBM' : {
+                    'learning_rate' : [0.1, 0.01],
+                    'max_depth' : [-5, -10, -20] 
+                },
+                'CatBoost' : {
+                    'depth' : [6, 8, 10],
+                    'learning_rate' : [0.01, 0.05, 0.1],
+                    'iterations' : [30, 50, 100]
+                }
 
             }
+
+
+
+
+            # evalutaing the models and using GridSearchCV() to tune them and exporting the best performing model.
+            evaluate_models(X_train, Y_train, X_val, Y_val, models, params)
+
+            
         except Exception as e:
             raise CustomException(e, sys)

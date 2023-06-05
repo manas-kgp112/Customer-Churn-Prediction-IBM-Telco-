@@ -27,3 +27,11 @@ def save_object(file_path, obj):
             dill.dump(obj, file_obj)
     except Exception as e:
         raise CustomException(e, sys)
+    
+
+# This function evaluates models and tuning them.
+def evaluate_models(X_train, Y_train, X_val, Y_val, models, param_grid):
+    try:
+        pass
+    except Exception as e:
+        raise CustomException(e, sys)
