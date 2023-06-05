@@ -13,4 +13,5 @@ nbformat
 xgboost
 lightgbm
 dill
+catboost
 -e .
