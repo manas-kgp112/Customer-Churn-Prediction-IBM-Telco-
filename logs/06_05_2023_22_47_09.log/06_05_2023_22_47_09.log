@@ -1,0 +1,22 @@
+[ 2023-06-05 22:47:13,069 ] 56 root - INFO - Initiating Data Ingestion sequence...
+[ 2023-06-05 22:47:20,689 ] 71 root - INFO - Extracted 6 files as DataFrames.
+[ 2023-06-05 22:47:20,689 ] 39 root - INFO - Initiating data visulaization sequence...
+[ 2023-06-05 22:47:20,689 ] 40 root - INFO - Extracting categorical features.
+[ 2023-06-05 22:47:22,450 ] 69 root - INFO - Plots saved as : artifacts\plots\categorical_features_plot.pdf
+[ 2023-06-05 22:47:22,903 ] 85 root - INFO - Plots saved as : artifacts\plots\continous_features_plot.pdf
+[ 2023-06-05 22:47:22,903 ] 84 root - INFO - Initiating data transformation sequence...
+[ 2023-06-05 22:47:22,903 ] 49 root - INFO - Collecting features.
+[ 2023-06-05 22:47:22,903 ] 67 root - INFO - Data transformation object extracted.
+[ 2023-06-05 22:47:22,911 ] 93 root - INFO - Applying preprocessing object on training dataframe
+[ 2023-06-05 22:47:22,927 ] 98 root - INFO - Data transformed successfully
+[ 2023-06-05 22:47:29,079 ] 105 root - INFO - Transformed data saved as .xlsx @ [artifacts/data/transformed_churn.xlsx]
+[ 2023-06-05 22:47:29,083 ] 77 root - INFO - Splitting train/val datasets into X and Y inputs.
+[ 2023-06-05 22:47:29,083 ] 83 root - INFO - Initialising model building process...
+[ 2023-06-05 22:47:29,088 ] 52 root - INFO - Evaluating models.
+[ 2023-06-05 22:47:29,088 ] 66 root - INFO - Implementing GridSearchCV() to find the version of Logistic Regression
+[ 2023-06-05 22:47:54,725 ] 76 root - INFO - Printing classification reports for Logistic Regression
+[ 2023-06-05 22:48:08,264 ] 66 root - INFO - Implementing GridSearchCV() to find the version of Gaussian Naive Bayes
+[ 2023-06-05 22:48:08,320 ] 76 root - INFO - Printing classification reports for Gaussian Naive Bayes
+[ 2023-06-05 22:48:21,042 ] 66 root - INFO - Implementing GridSearchCV() to find the version of K Nearest Neighbors
+[ 2023-06-05 22:48:22,402 ] 76 root - INFO - Printing classification reports for K Nearest Neighbors
+[ 2023-06-05 22:48:37,410 ] 66 root - INFO - Implementing GridSearchCV() to find the version of Support Vector Machine

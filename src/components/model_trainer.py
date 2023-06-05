@@ -65,7 +65,7 @@ class ModelTrainerConfig:
 
 
 # The ModelTrainer() class configures, tunes, traines and export models to specified paths for further use. This also evaluates performance of the models based on few performance metrics
-class ModeTrainer:
+class ModelTrainer:
 
     # This function initialises the path where the fint-tuned/trained model must be stored. (extra configuration may also be added in the config_class).
     def __init__(self):
@@ -126,7 +126,7 @@ class ModeTrainer:
             # Hyperparameter Tuning
             params = {
                 'Logistic Regression' : {
-                    'penalty' : ['l1', 'l2', 'elasticnet'],
+                    'penalty' : ['l2', 'elasticnet'],
                     'C' : [0.1, 1, 10],
                     'max_iter' : [100, 1000, 10000]
                 },
@@ -180,6 +180,6 @@ class ModeTrainer:
             # evalutaing the models and using GridSearchCV() to tune them and exporting the best performing model.
             evaluate_models(X_train, Y_train, X_val, Y_val, models, params)
 
-            
+
         except Exception as e:
             raise CustomException(e, sys)

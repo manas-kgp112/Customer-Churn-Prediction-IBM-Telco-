@@ -14,6 +14,7 @@ from src.logger import logging
 # Importing custom modules for vizualization, model-training etc.
 from src.components.data_visualization import DataVisualization
 from src.components.data_transformation import DataTransformation
+from src.components.model_trainer import ModelTrainer
 
 
 
@@ -102,3 +103,9 @@ if __name__ == "__main__":
     # data_processor, drop_features, dummy_features = data_transformation.data_transformation_object()
     transformed_data = data_transformation.initiate_data_transformation(data=data)
     _, _, _, _, train_data, test_data = data_transformation.split_dataset(transformed_data=transformed_data)
+
+
+
+    # model training sequence initiation
+    model_trainer = ModelTrainer()
+    model_trainer.initiate_model_trainer(train_data=train_data, val_data=test_data)

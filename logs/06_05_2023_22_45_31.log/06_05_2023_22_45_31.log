@@ -1,0 +1,17 @@
+[ 2023-06-05 22:45:35,383 ] 56 root - INFO - Initiating Data Ingestion sequence...
+[ 2023-06-05 22:45:42,811 ] 71 root - INFO - Extracted 6 files as DataFrames.
+[ 2023-06-05 22:45:42,811 ] 39 root - INFO - Initiating data visulaization sequence...
+[ 2023-06-05 22:45:42,811 ] 40 root - INFO - Extracting categorical features.
+[ 2023-06-05 22:45:44,482 ] 69 root - INFO - Plots saved as : artifacts\plots\categorical_features_plot.pdf
+[ 2023-06-05 22:45:44,853 ] 85 root - INFO - Plots saved as : artifacts\plots\continous_features_plot.pdf
+[ 2023-06-05 22:45:44,853 ] 84 root - INFO - Initiating data transformation sequence...
+[ 2023-06-05 22:45:44,853 ] 49 root - INFO - Collecting features.
+[ 2023-06-05 22:45:44,853 ] 67 root - INFO - Data transformation object extracted.
+[ 2023-06-05 22:45:44,861 ] 93 root - INFO - Applying preprocessing object on training dataframe
+[ 2023-06-05 22:45:44,882 ] 98 root - INFO - Data transformed successfully
+[ 2023-06-05 22:45:50,513 ] 105 root - INFO - Transformed data saved as .xlsx @ [artifacts/data/transformed_churn.xlsx]
+[ 2023-06-05 22:45:50,519 ] 77 root - INFO - Splitting train/val datasets into X and Y inputs.
+[ 2023-06-05 22:45:50,520 ] 83 root - INFO - Initialising model building process...
+[ 2023-06-05 22:45:50,520 ] 52 root - INFO - Evaluating models.
+[ 2023-06-05 22:45:50,520 ] 66 root - INFO - Implementing GridSearchCV() to find the version of Logistic Regression
+[ 2023-06-05 22:46:17,572 ] 76 root - INFO - Printing classification reports for Logistic Regression
