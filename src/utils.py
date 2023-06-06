@@ -77,7 +77,6 @@ def evaluate_models(X_train, Y_train, X_val, Y_val, models:dict, param_grid:dict
                 accuracies[model_name] = accuracy
                 classification_reports[model_name] = class_report
 
-
                 # Saving Confusion Matrix
                 conf_mat = confusion_matrix(Y_val, Y_pred)
                 cm_d = ConfusionMatrixDisplay(conf_mat)
