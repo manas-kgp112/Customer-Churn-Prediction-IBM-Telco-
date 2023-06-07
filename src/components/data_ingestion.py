@@ -108,4 +108,4 @@ if __name__ == "__main__":
 
     # model training sequence initiation
     model_trainer = ModelTrainer()
-    model_trainer.initiate_model_trainer(train_data=train_data, val_data=test_data)
+    performance_reports, accuracy_reports = model_trainer.initiate_model_trainer(train_data=train_data, val_data=test_data)

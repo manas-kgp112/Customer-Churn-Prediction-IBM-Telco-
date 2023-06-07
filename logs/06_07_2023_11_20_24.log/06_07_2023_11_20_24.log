@@ -1,0 +1,72 @@
+[ 2023-06-07 11:20:28,288 ] 56 root - INFO - Initiating Data Ingestion sequence...
+[ 2023-06-07 11:20:34,724 ] 71 root - INFO - Extracted 6 files as DataFrames.
+[ 2023-06-07 11:20:34,726 ] 39 root - INFO - Initiating data visulaization sequence...
+[ 2023-06-07 11:20:34,726 ] 40 root - INFO - Extracting categorical features.
+[ 2023-06-07 11:20:37,367 ] 69 root - INFO - Plots saved as : artifacts\plots\categorical_features_plot.pdf
+[ 2023-06-07 11:20:37,897 ] 85 root - INFO - Plots saved as : artifacts\plots\continous_features_plot.pdf
+[ 2023-06-07 11:20:37,897 ] 84 root - INFO - Initiating data transformation sequence...
+[ 2023-06-07 11:20:37,897 ] 49 root - INFO - Collecting features.
+[ 2023-06-07 11:20:37,897 ] 67 root - INFO - Data transformation object extracted.
+[ 2023-06-07 11:20:37,912 ] 93 root - INFO - Applying preprocessing object on training dataframe
+[ 2023-06-07 11:20:37,930 ] 98 root - INFO - Data transformed successfully
+[ 2023-06-07 11:20:43,684 ] 105 root - INFO - Transformed data saved as .xlsx @ [artifacts/data/transformed_churn.xlsx]
+[ 2023-06-07 11:20:43,688 ] 77 root - INFO - Splitting train/val datasets into X and Y inputs.
+[ 2023-06-07 11:20:43,692 ] 83 root - INFO - Initialising model building process...
+[ 2023-06-07 11:20:43,699 ] 52 root - INFO - Evaluating models.
+[ 2023-06-07 11:20:43,700 ] 63 root - INFO - Implementing GridSearchCV() to find the version of Logistic Regression
+[ 2023-06-07 11:21:03,847 ] 66 root - INFO - Best version trained for Logistic Regression
+[ 2023-06-07 11:21:03,864 ] 72 root - INFO - Printing classification reports for Logistic Regression
+[ 2023-06-07 11:21:16,556 ] 83 root - INFO - Confusion matrix saved for Logistic Regression
+[ 2023-06-07 11:21:16,556 ] 63 root - INFO - Implementing GridSearchCV() to find the version of Gaussian Naive Bayes
+[ 2023-06-07 11:21:16,624 ] 66 root - INFO - Best version trained for Gaussian Naive Bayes
+[ 2023-06-07 11:21:16,632 ] 72 root - INFO - Printing classification reports for Gaussian Naive Bayes
+[ 2023-06-07 11:21:29,202 ] 83 root - INFO - Confusion matrix saved for Gaussian Naive Bayes
+[ 2023-06-07 11:21:29,202 ] 63 root - INFO - Implementing GridSearchCV() to find the version of K Nearest Neighbors
+[ 2023-06-07 11:21:30,727 ] 66 root - INFO - Best version trained for K Nearest Neighbors
+[ 2023-06-07 11:21:30,760 ] 72 root - INFO - Printing classification reports for K Nearest Neighbors
+[ 2023-06-07 11:21:43,549 ] 83 root - INFO - Confusion matrix saved for K Nearest Neighbors
+[ 2023-06-07 11:21:43,549 ] 63 root - INFO - Implementing GridSearchCV() to find the version of Support Vector Machine
+[ 2023-06-07 11:26:20,427 ] 66 root - INFO - Best version trained for Support Vector Machine
+[ 2023-06-07 11:26:21,654 ] 72 root - INFO - Printing classification reports for Support Vector Machine
+[ 2023-06-07 11:26:36,527 ] 83 root - INFO - Confusion matrix saved for Support Vector Machine
+[ 2023-06-07 11:26:36,527 ] 63 root - INFO - Implementing GridSearchCV() to find the version of Decision Tree Classifier
+[ 2023-06-07 11:26:37,240 ] 66 root - INFO - Best version trained for Decision Tree Classifier
+[ 2023-06-07 11:26:37,256 ] 72 root - INFO - Printing classification reports for Decision Tree Classifier
+[ 2023-06-07 11:26:49,662 ] 83 root - INFO - Confusion matrix saved for Decision Tree Classifier
+[ 2023-06-07 11:26:49,662 ] 63 root - INFO - Implementing GridSearchCV() to find the version of Random Forest Classifier
+[ 2023-06-07 11:28:39,755 ] 66 root - INFO - Best version trained for Random Forest Classifier
+[ 2023-06-07 11:28:39,981 ] 72 root - INFO - Printing classification reports for Random Forest Classifier
+[ 2023-06-07 11:28:52,598 ] 83 root - INFO - Confusion matrix saved for Random Forest Classifier
+[ 2023-06-07 11:28:52,598 ] 63 root - INFO - Implementing GridSearchCV() to find the version of Bagging Classifier
+[ 2023-06-07 11:34:09,746 ] 66 root - INFO - Best version trained for Bagging Classifier
+[ 2023-06-07 11:34:10,438 ] 72 root - INFO - Printing classification reports for Bagging Classifier
+[ 2023-06-07 11:34:22,159 ] 83 root - INFO - Confusion matrix saved for Bagging Classifier
+[ 2023-06-07 11:34:22,159 ] 63 root - INFO - Implementing GridSearchCV() to find the version of Gradient Boosting Classifier
+[ 2023-06-07 11:35:23,451 ] 66 root - INFO - Best version trained for Gradient Boosting Classifier
+[ 2023-06-07 11:35:23,496 ] 72 root - INFO - Printing classification reports for Gradient Boosting Classifier
+[ 2023-06-07 11:35:34,134 ] 83 root - INFO - Confusion matrix saved for Gradient Boosting Classifier
+[ 2023-06-07 11:35:34,134 ] 63 root - INFO - Implementing GridSearchCV() to find the version of AdaBoost
+[ 2023-06-07 11:35:34,752 ] 66 root - INFO - Best version trained for AdaBoost
+[ 2023-06-07 11:35:34,765 ] 72 root - INFO - Printing classification reports for AdaBoost
+[ 2023-06-07 11:35:45,110 ] 83 root - INFO - Confusion matrix saved for AdaBoost
+[ 2023-06-07 11:35:45,110 ] 63 root - INFO - Implementing GridSearchCV() to find the version of Stacking Classifier
+[ 2023-06-07 11:36:34,698 ] 66 root - INFO - Best version trained for Stacking Classifier
+[ 2023-06-07 11:36:34,812 ] 72 root - INFO - Printing classification reports for Stacking Classifier
+[ 2023-06-07 11:36:46,696 ] 83 root - INFO - Confusion matrix saved for Stacking Classifier
+[ 2023-06-07 11:36:46,696 ] 63 root - INFO - Implementing GridSearchCV() to find the version of Voting Classifier
+[ 2023-06-07 11:36:56,477 ] 66 root - INFO - Best version trained for Voting Classifier
+[ 2023-06-07 11:36:56,581 ] 72 root - INFO - Printing classification reports for Voting Classifier
+[ 2023-06-07 11:37:06,729 ] 83 root - INFO - Confusion matrix saved for Voting Classifier
+[ 2023-06-07 11:37:06,729 ] 63 root - INFO - Implementing GridSearchCV() to find the version of XgBoost
+[ 2023-06-07 11:37:07,989 ] 66 root - INFO - Best version trained for XgBoost
+[ 2023-06-07 11:37:08,007 ] 72 root - INFO - Printing classification reports for XgBoost
+[ 2023-06-07 11:37:18,231 ] 83 root - INFO - Confusion matrix saved for XgBoost
+[ 2023-06-07 11:37:18,231 ] 63 root - INFO - Implementing GridSearchCV() to find the version of LightGBM
+[ 2023-06-07 11:37:20,907 ] 66 root - INFO - Best version trained for LightGBM
+[ 2023-06-07 11:37:20,925 ] 72 root - INFO - Printing classification reports for LightGBM
+[ 2023-06-07 11:37:31,810 ] 83 root - INFO - Confusion matrix saved for LightGBM
+[ 2023-06-07 11:37:31,810 ] 63 root - INFO - Implementing GridSearchCV() to find the version of CatBoost
+[ 2023-06-07 11:40:01,741 ] 66 root - INFO - Best version trained for CatBoost
+[ 2023-06-07 11:40:01,763 ] 72 root - INFO - Printing classification reports for CatBoost
+[ 2023-06-07 11:40:13,762 ] 83 root - INFO - Confusion matrix saved for CatBoost
+[ 2023-06-07 11:40:13,762 ] 86 root - INFO - All models successfully evaluated and the best versions of each are selected.

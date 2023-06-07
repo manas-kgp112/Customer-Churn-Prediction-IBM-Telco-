@@ -51,28 +51,24 @@ def evaluate_models(X_train, Y_train, X_val, Y_val, models:dict, param_grid:dict
     try:
         logging.info("Evaluating models.")
         # for storing performance analysis
-        content = []
         os.makedirs(os.path.join("artifacts", "performance"), exist_ok=True)
-        # Define a style for the paragraphs
-        styles = getSampleStyleSheet()
+        os.makedirs(os.path.join("artifacts", "models"), exist_ok=True)
         # These dictionaries will store the classification report and accuracy stats for every model
         classification_reports = {}
         accuracies = {}
 
         for model_name, model in models.items():
             if model_name in param_grid:
-                content.append(Paragraph(model_name, style=styles['Title']))
                 hyper_parameters = param_grid[model_name]
                 logging.info(f"Implementing GridSearchCV() to find the version of {model_name}")
                 grid_search = GridSearchCV(model, hyper_parameters, cv=5)
                 grid_search.fit(X_train, Y_train)
+                logging.info(f"Best version trained for {model_name}")
                 best_model = grid_search.best_estimator_
+                save_object(os.path.join("artifacts", "models", f"{model_name}.pkl"), best_model)
                 Y_pred = best_model.predict(X_val)
                 accuracy = accuracy_score(Y_val, Y_pred)
-                content.append(Paragraph(f"Accuracy Score : {accuracy_score}", style=styles['Normal']))
                 class_report = classification_report(Y_val, Y_pred)
-                content.append(Paragraph(class_report, style=styles['Normal']))
-                content.append(Paragraph("<br/><br/>", styles["Normal"])) # for gap between two models
                 logging.info(f"Printing classification reports for {model_name}")
                 accuracies[model_name] = accuracy
                 classification_reports[model_name] = class_report
@@ -84,11 +80,8 @@ def evaluate_models(X_train, Y_train, X_val, Y_val, models:dict, param_grid:dict
                 plt.xlabel('Predicted Label')
                 plt.ylabel('True Label')
                 plt.savefig(os.path.join("artifacts", "performance", f"ConfusionMatrix_{model_name}.pdf"), format='pdf', dpi=3000)
+                logging.info(f"Confusion matrix saved for {model_name}")
 
-
-        # Printing classification reports and accuracy scores
-        performance_doc = SimpleDocTemplate(os.path.join("artifacts", "performance", "accuracy.pdf"), pagesize=letter)
-        performance_doc.build(content)
 
         logging.info("All models successfully evaluated and the best versions of each are selected.")
 

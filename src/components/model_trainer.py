@@ -136,8 +136,8 @@ class ModelTrainer:
                     'weights' : ['uniform', 'distance']
                 },
                 'Support Vector Machine' : {
-                    'C' : [0.1, 1, 10],
-                    'kernel' : ['linear', 'poly', 'rbf', 'sigmoid'],
+                    'C' : [0.1, 1],
+                    'kernel' : ['rbf'],
                     'gamma' : [0.1, 0.01]
                 },
                 'Decision Tree Classifier' : {
@@ -178,7 +178,13 @@ class ModelTrainer:
 
 
             # evalutaing the models and using GridSearchCV() to tune them and exporting the best performing model.
-            evaluate_models(X_train, Y_train, X_val, Y_val, models, params)
+            classification_reports, accuracies = evaluate_models(X_train, Y_train, X_val, Y_val, models, params)
+
+
+            return (
+                classification_reports,
+                accuracies
+            )
 
 
         except Exception as e:
