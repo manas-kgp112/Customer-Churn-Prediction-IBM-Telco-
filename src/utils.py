@@ -12,10 +12,8 @@ from sklearn.metrics import (
     ConfusionMatrixDisplay
 )
 
-# Importing ReportLab for pdf generation {for accuracy scores and classification report}
-from reportlab.platypus import SimpleDocTemplate, Paragraph
-from reportlab.lib.styles import getSampleStyleSheet
-from reportlab.lib.pagesizes import letter
+# Importing sklearn_evaluation for pdf generation {for accuracy scores and classification report}
+from sklearn_evaluation import plot
 
 
 # GridSearchCV & RandomizedSearchCV import 
@@ -54,7 +52,6 @@ def evaluate_models(X_train, Y_train, X_val, Y_val, models:dict, param_grid:dict
         os.makedirs(os.path.join("artifacts", "performance"), exist_ok=True)
         os.makedirs(os.path.join("artifacts", "models"), exist_ok=True)
         # These dictionaries will store the classification report and accuracy stats for every model
-        classification_reports = {}
         accuracies = {}
 
         for model_name, model in models.items():
@@ -68,10 +65,8 @@ def evaluate_models(X_train, Y_train, X_val, Y_val, models:dict, param_grid:dict
                 save_object(os.path.join("artifacts", "models", f"{model_name}.pkl"), best_model)
                 Y_pred = best_model.predict(X_val)
                 accuracy = accuracy_score(Y_val, Y_pred)
-                class_report = classification_report(Y_val, Y_pred)
                 logging.info(f"Printing classification reports for {model_name}")
                 accuracies[model_name] = accuracy
-                classification_reports[model_name] = class_report
 
                 # Saving Confusion Matrix
                 conf_mat = confusion_matrix(Y_val, Y_pred)
@@ -83,14 +78,21 @@ def evaluate_models(X_train, Y_train, X_val, Y_val, models:dict, param_grid:dict
                 logging.info(f"Confusion matrix saved for {model_name}")
 
 
+                # Saving Classification Report
+                plot.ClassificationReport.from_raw_data(Y_val, Y_pred)
+                plt.savefig(os.path.join("artifacts", "performance", f"ClassificationReport_{model_name}.pdf"), format='pdf', dpi=3000)
+                logging.info(f"Classification Report saved for {model_name}")
+                
+
+
         logging.info("All models successfully evaluated and the best versions of each are selected.")
 
 
 
         # returning reports
         return (
-            classification_reports,
             accuracies
         )
     except Exception as e:
         raise CustomException(e, sys)
+    

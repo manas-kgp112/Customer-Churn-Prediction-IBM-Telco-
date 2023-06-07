@@ -87,11 +87,11 @@ class DataIngestion:
 
 if __name__ == "__main__":
     # data ingestion sequence initiation
-    data_ingestion = DataIngestion()
-    data, data_services, data_path = data_ingestion.initiate_data_ingestion()
+    # data_ingestion = DataIngestion()
+    # data, data_services, data_path = data_ingestion.initiate_data_ingestion()
 
 
-    # data visulaization sequence initiation
+    # # data visulaization sequence initiation
     data_visualization = DataVisualization()
     categorical_features = data_visualization.get_categorical_features(data=data)
     data_visualization.load_categorical_visualization(categorical_features=categorical_features, data=data)
@@ -108,4 +108,4 @@ if __name__ == "__main__":
 
     # model training sequence initiation
     model_trainer = ModelTrainer()
-    performance_reports, accuracy_reports = model_trainer.initiate_model_trainer(train_data=train_data, val_data=test_data)
+    accuracy_reports = model_trainer.initiate_model_trainer(train_data=train_data, val_data=test_data)

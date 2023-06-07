@@ -15,4 +15,5 @@ lightgbm
 dill
 catboost
 reportlab
+sklearn_evaluation
 -e .
